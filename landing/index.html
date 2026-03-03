@@ -3,71 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PulseForge | Realtime Canvas Charts</title>
+    <title>PulseForge | Realtime Charts for React</title>
     <meta
       name="description"
-      content="PulseForge is a realtime React chart engine for streaming interfaces. Smooth canvas rendering, dark-mode-first design, and production-grade package ergonomics."
+      content="PulseForge ships Liveline-style realtime chart motion in a production-ready React package."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="ambient ambient-a"></div>
-    <div class="ambient ambient-b"></div>
-    <main class="page">
-      <header class="topbar">
-        <div class="brand">PulseForge</div>
-        <nav class="links">
+    <header class="site-header">
+      <div class="inner">
+        <a class="wordmark" href="#">PulseForge</a>
+        <nav>
           <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="#api">API</a>
-          <a href="#demo">Demo</a>
+          <a href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer">npm</a>
         </nav>
-      </header>
+      </div>
+    </header>
 
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">Realtime UI Infrastructure</p>
-          <h1>Build streaming charts that feel alive, not noisy.</h1>
-          <p class="sub">
-            Liveline-inspired motion in a production-grade React package. Canvas rendering, decimation for high-frequency streams,
-            and dark-mode-first presentation.
-          </p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">View Source</a>
-            <a class="btn btn-ghost" href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer">npm Package</a>
+    <main class="content">
+      <p class="crumb">Blog / Engineering</p>
+      <h1>Introducing PulseForge: realtime chart motion that stays readable under load.</h1>
+
+      <section class="meta-row">
+        <div class="author-block">
+          <div class="avatar">AP</div>
+          <div>
+            <p class="author">Anirudh Pareek</p>
+            <p class="role">Product + Engineering</p>
           </div>
         </div>
-        <div class="hero-chart" id="demo" aria-label="PulseForge live demo surface">
-          <canvas id="pulse-canvas" width="960" height="420"></canvas>
-          <div class="hud">
-            <span><strong id="fps">0</strong> fps</span>
-            <span><strong id="pts">0</strong> points</span>
-            <span><strong id="mode">line</strong> mode</span>
-          </div>
+        <div class="post-stats">
+          <span>4 min read</span>
+          <span>Mar 3, 2026</span>
         </div>
       </section>
 
-      <section class="grid" id="api">
-        <article>
-          <h2>Realtime by default</h2>
-          <p>Single canvas render loop with smooth interpolation and meaningful motion.</p>
-        </article>
-        <article>
-          <h2>High-frequency ready</h2>
-          <p>Line and candlestick decimation to preserve shape under heavy data volume.</p>
-        </article>
-        <article>
-          <h2>Shippable package</h2>
-          <p>TypeScript-first API, ESM/CJS builds, Storybook demos, tests, and CI workflows.</p>
-        </article>
+      <p class="lead">
+        PulseForge is a React canvas chart package inspired by Liveline-style motion. It keeps streaming data visually calm,
+        ships with line and candlestick modes, and includes decimation + stress tooling so performance remains predictable.
+      </p>
+
+      <section class="media-shell" id="demo" aria-label="PulseForge chart demo">
+        <canvas id="pulse-canvas" width="1200" height="520"></canvas>
+        <div class="media-overlay">
+          <span><strong id="fps">0</strong> fps</span>
+          <span><strong id="pts">0</strong> points</span>
+          <span><strong id="mode">line</strong> mode</span>
+        </div>
       </section>
 
-      <section class="snippet-wrap">
+      <section class="article">
+        <h2>The core idea</h2>
+        <p>
+          Most chart libraries get noisy when streams get fast. PulseForge favors ordering and legibility first: decimate aggressively,
+          preserve shape, and animate transitions only when they improve comprehension.
+        </p>
+
+        <h2>What ships in the package</h2>
+        <ul>
+          <li>Single-canvas render loop with low overhead</li>
+          <li>Line and candlestick rendering modes</li>
+          <li>Decimation for high-frequency feeds</li>
+          <li>SSR-safe fallback and reduced-motion support</li>
+          <li>Storybook examples, tests, benchmark and stress harness</li>
+        </ul>
+
+        <h2>Quick usage</h2>
         <pre><code>import { PulseForge } from '@anirudhpareek/pulseforge';
 
 &lt;PulseForge
@@ -79,8 +87,12 @@
   showFps
 /&gt;</code></pre>
       </section>
-    </main>
 
-    <script type="module" src="./main.js"></script>
+      <section class="cta-strip">
+        <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer" class="btn btn-primary">Read the source</a>
+        <a href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer" class="btn btn-secondary">Install package</a>
+      </section>
+    </main>
   </body>
+  <script type="module" src="./main.js"></script>
 </html>
