@@ -2,6 +2,10 @@
 
 Realtime React chart component inspired by Liveline-style motion, built for production package quality.
 
+## Live Landing
+- Production: https://landing-delta-dusky.vercel.app
+- Source: `landing/` (dark-mode static microsite)
+
 ## Features
 - Single-canvas rendering (`requestAnimationFrame`) for low overhead
 - `line` and `candlestick` modes
@@ -56,4 +60,3 @@ export default function App() {
 1. Bump version in `package.json`.
 2. `npm run check`
 3. `npm publish --access public`
-

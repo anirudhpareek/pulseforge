@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PulseForge | Realtime Canvas Charts</title>
+    <meta
+      name="description"
+      content="PulseForge is a realtime React chart engine for streaming interfaces. Smooth canvas rendering, dark-mode-first design, and production-grade package ergonomics."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+    <main class="page">
+      <header class="topbar">
+        <div class="brand">PulseForge</div>
+        <nav class="links">
+          <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="#api">API</a>
+          <a href="#demo">Demo</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Realtime UI Infrastructure</p>
+          <h1>Build streaming charts that feel alive, not noisy.</h1>
+          <p class="sub">
+            Liveline-inspired motion in a production-grade React package. Canvas rendering, decimation for high-frequency streams,
+            and dark-mode-first presentation.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">View Source</a>
+            <a class="btn btn-ghost" href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer">npm Package</a>
+          </div>
+        </div>
+        <div class="hero-chart" id="demo" aria-label="PulseForge live demo surface">
+          <canvas id="pulse-canvas" width="960" height="420"></canvas>
+          <div class="hud">
+            <span><strong id="fps">0</strong> fps</span>
+            <span><strong id="pts">0</strong> points</span>
+            <span><strong id="mode">line</strong> mode</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid" id="api">
+        <article>
+          <h2>Realtime by default</h2>
+          <p>Single canvas render loop with smooth interpolation and meaningful motion.</p>
+        </article>
+        <article>
+          <h2>High-frequency ready</h2>
+          <p>Line and candlestick decimation to preserve shape under heavy data volume.</p>
+        </article>
+        <article>
+          <h2>Shippable package</h2>
+          <p>TypeScript-first API, ESM/CJS builds, Storybook demos, tests, and CI workflows.</p>
+        </article>
+      </section>
+
+      <section class="snippet-wrap">
+        <pre><code>import { PulseForge } from '@anirudhpareek/pulseforge';
+
+&lt;PulseForge
+  mode="line"
+  lineData={stream}
+  width={900}
+  height={320}
+  maxPoints={700}
+  showFps
+/&gt;</code></pre>
+      </section>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
