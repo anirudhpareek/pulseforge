@@ -14,12 +14,15 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="noise" aria-hidden="true"></div>
+
     <header class="topbar">
       <div class="top-inner">
         <a class="logo" href="#">PulseForge</a>
         <nav>
           <a href="#features">Features</a>
-          <a href="#demo">Demo</a>
+          <a href="#principles">Principles</a>
+          <a href="#content">Docs</a>
           <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
           <a class="btn" href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer">Install</a>
         </nav>
@@ -27,10 +30,14 @@
     </header>
 
     <main>
-      <section class="hero-wrap">
+      <section class="hero-wrap" data-reveal>
         <div class="frame-grid"></div>
         <p class="kicker">Realtime charts for modern products</p>
-        <h1>Build live data interfaces that feel calm, precise, and fast.</h1>
+        <h1>Motion-rich streaming charts with production discipline built in.</h1>
+        <p class="hero-sub">
+          Liveline-inspired rhythm, Linear-level product clarity, Vercel-style engineering precision.
+          PulseForge keeps data alive without making interfaces noisy.
+        </p>
 
         <div class="hero-media" id="demo" aria-label="PulseForge chart demo">
           <canvas id="pulse-canvas" width="1280" height="560"></canvas>
@@ -42,17 +49,62 @@
         </div>
       </section>
 
-      <section class="body" id="features">
-        <p>
-          PulseForge is a React canvas package for realtime charts. It combines Liveline-inspired movement with practical engineering:
-          high-frequency decimation, line and candlestick modes, SSR-safe behavior, reduced-motion handling, and test + benchmark tooling.
-        </p>
+      <section class="metrics" data-reveal>
+        <article>
+          <h3>&lt; 5ms decimation</h3>
+          <p>Benchmark for 300k points down to 700 keeps UI fluid under heavy stream volume.</p>
+        </article>
+        <article>
+          <h3>SSR + reduced motion</h3>
+          <p>Safe server rendering with accessibility-aware animation behavior by default.</p>
+        </article>
+        <article>
+          <h3>Line + candlestick</h3>
+          <p>Switch modes without changing architecture and preserve visual continuity.</p>
+        </article>
+      </section>
 
-        <p>
-          The goal is simple: keep motion expressive but never noisy, keep data dense but never unreadable, and keep implementation
-          straightforward enough to ship in serious products.
-        </p>
+      <section class="split" id="features" data-reveal>
+        <div>
+          <p class="section-label">What it ships</p>
+          <h2>Everything needed to go from demo motion to production shipping.</h2>
+        </div>
+        <ul class="feature-list">
+          <li>Single-canvas render loop tuned for streaming data.</li>
+          <li>Shape-preserving decimation for high-frequency feeds.</li>
+          <li>Storybook, tests, benchmark harness, and stress scenarios.</li>
+          <li>TypeScript-first package with ESM/CJS outputs.</li>
+          <li>Dark-first visual defaults with easy theme overrides.</li>
+        </ul>
+      </section>
 
+      <section class="principles" id="principles" data-reveal>
+        <p class="section-label">Design principles</p>
+        <div class="principle-grid">
+          <article>
+            <h3>Calm by default</h3>
+            <p>Animation clarifies state change, never distracts from value change.</p>
+          </article>
+          <article>
+            <h3>Legibility under pressure</h3>
+            <p>Dense streams remain readable through aggressive but faithful decimation.</p>
+          </article>
+          <article>
+            <h3>Operationally real</h3>
+            <p>Built with stress and benchmark tooling, not visual demos alone.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="body" id="content" data-reveal>
+        <p>
+          PulseForge is for teams building data interfaces where movement and trust both matter. It is ideal for trading surfaces,
+          monitoring dashboards, ops tooling, and any product where realtime context should feel smooth and intentional.
+        </p>
+        <p>
+          The package ships with practical guardrails: reduced-motion support, SSR-safe rendering, and built-in test + benchmark
+          workflows to avoid regressions as datasets and feature scope grow.
+        </p>
         <pre><code>import { PulseForge } from '@anirudhpareek/pulseforge';
 
 &lt;PulseForge
@@ -64,12 +116,24 @@
   showFps
 /&gt;</code></pre>
       </section>
+
+      <section class="links" data-reveal>
+        <p class="section-label">Retrace links</p>
+        <div class="link-chips">
+          <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">PulseForge on GitHub</a>
+          <a href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer">npm package</a>
+          <a href="https://x.com/AnirudhP" target="_blank" rel="noreferrer">Anirudh on X</a>
+          <a href="https://benji.org/liveline" target="_blank" rel="noreferrer">Liveline reference</a>
+          <a href="https://vercel.com/blog/introducing-react-best-practices" target="_blank" rel="noreferrer">Vercel reference</a>
+          <a href="https://linear.app/now/craft" target="_blank" rel="noreferrer">Linear craft reference</a>
+        </div>
+      </section>
     </main>
 
     <footer class="ack">
       <div class="ack-inner">
         <p>
-          Built by Anirudh Pareek. Inspired by the craft and clarity of Linear and Vercel.
+          Built by Anirudh Pareek. Inspired by Linear, Vercel, and Benji Taylor's Liveline work.
         </p>
         <div class="ack-links">
           <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>

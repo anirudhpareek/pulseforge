@@ -9,7 +9,9 @@ const state = {
   mode: 'line',
   lastPointAt: performance.now(),
   lastModeAt: performance.now(),
-  lastFrameAt: performance.now()
+  lastFrameAt: performance.now(),
+  rx: 0,
+  ry: 0
 };
 
 let width = 0;
@@ -142,11 +144,55 @@ function tick(now) {
   if (state.mode === 'line') drawLine();
   else drawCandles();
 
+  const media = document.querySelector('.hero-media');
+  if (media) {
+    media.style.transform = `perspective(1000px) rotateX(${state.rx}deg) rotateY(${state.ry}deg)`;
+  }
+
   fpsNode.textContent = (1000 / Math.max(1, delta)).toFixed(0);
   requestAnimationFrame(tick);
 }
 
 window.addEventListener('resize', resize);
+
+const reduceMotion =
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!reduceMotion) {
+  const revealNodes = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.14 }
+  );
+  revealNodes.forEach((n) => io.observe(n));
+
+  const hero = document.querySelector('.hero-media');
+  if (hero) {
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const nx = (e.clientX - rect.left) / rect.width - 0.5;
+      const ny = (e.clientY - rect.top) / rect.height - 0.5;
+      state.ry = nx * 1.4;
+      state.rx = -ny * 1.4;
+    });
+    hero.addEventListener('mouseleave', () => {
+      state.rx = 0;
+      state.ry = 0;
+    });
+  }
+} else {
+  document.querySelectorAll('[data-reveal]').forEach((n) => n.classList.add('show'));
+}
+
 resize();
 for (let i = 0; i < 120; i++) addPoint(performance.now() + i * 16);
 requestAnimationFrame(tick);
