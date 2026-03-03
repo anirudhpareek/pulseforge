@@ -29,8 +29,8 @@ function resize() {
 
 function addPoint(t) {
   const prev = state.points[state.points.length - 1] ?? { y: h * 0.52 };
-  const base = Math.sin(t / 830) * 2 + Math.cos(t / 610) * 1.3;
-  const jitter = (Math.random() - 0.5) * 10;
+  const base = Math.sin(t / 900) * 1.8 + Math.cos(t / 680) * 1.2;
+  const jitter = (Math.random() - 0.5) * 8.5;
   const y = Math.min(h * 0.86, Math.max(h * 0.14, prev.y + base + jitter));
 
   state.points.push({ x: w - 18, y });
@@ -41,7 +41,7 @@ function addPoint(t) {
 
 function drawGrid() {
   ctx.clearRect(0, 0, w, h);
-  ctx.strokeStyle = 'rgba(255,255,255,0.14)';
+  ctx.strokeStyle = 'rgba(255,255,255,0.12)';
   ctx.lineWidth = 1;
   const cols = 10;
   const rows = 6;
@@ -60,7 +60,7 @@ function drawGrid() {
   ctx.stroke();
 
   const axisY = h * 0.52;
-  ctx.strokeStyle = 'rgba(255,255,255,0.45)';
+  ctx.strokeStyle = 'rgba(255,255,255,0.38)';
   ctx.beginPath();
   ctx.moveTo(0, axisY);
   ctx.lineTo(w + 12, axisY);
@@ -79,7 +79,7 @@ function drawLine() {
   if (state.points.length < 2) return;
 
   const grad = ctx.createLinearGradient(0, 0, 0, h);
-  grad.addColorStop(0, 'rgba(255,255,255,0.22)');
+  grad.addColorStop(0, 'rgba(255,255,255,0.18)');
   grad.addColorStop(1, 'rgba(255,255,255,0.015)');
 
   const first = state.points[0];
@@ -95,8 +95,8 @@ function drawLine() {
     }
   }
 
-  ctx.strokeStyle = 'rgba(255,255,255,0.82)';
-  ctx.lineWidth = 2;
+  ctx.strokeStyle = 'rgba(255,255,255,0.78)';
+  ctx.lineWidth = 1.7;
   ctx.stroke();
 
   const last = state.points[state.points.length - 1];
@@ -124,7 +124,7 @@ function drawCandles() {
 
   for (const c of groups) {
     const up = c.close < c.open;
-    ctx.strokeStyle = up ? 'rgba(255,255,255,0.86)' : 'rgba(255,255,255,0.62)';
+    ctx.strokeStyle = up ? 'rgba(255,255,255,0.78)' : 'rgba(255,255,255,0.52)';
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(c.x, c.high);
@@ -133,7 +133,7 @@ function drawCandles() {
 
     const top = Math.min(c.open, c.close);
     const hh = Math.max(2, Math.abs(c.close - c.open));
-    ctx.fillStyle = up ? 'rgba(255,255,255,0.82)' : 'rgba(255,255,255,0.45)';
+    ctx.fillStyle = up ? 'rgba(255,255,255,0.72)' : 'rgba(255,255,255,0.38)';
     ctx.fillRect(c.x - 2.7, top, 5.4, hh);
   }
 }
@@ -147,7 +147,7 @@ function tick(now) {
     state.lastPointAt = now;
   }
 
-  if (now - state.lastModeAt > 7000) {
+  if (now - state.lastModeAt > 7600) {
     state.mode = state.mode === 'line' ? 'candlestick' : 'line';
     state.lastModeAt = now;
     modeNode.textContent = state.mode;
