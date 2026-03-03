@@ -3,7 +3,8 @@
 Realtime React chart component inspired by Liveline-style motion, built for production package quality.
 
 ## Live Landing
-- Production: https://landing-delta-dusky.vercel.app
+- Production: https://pulseforge-site.vercel.app
+- Fallback alias: https://landing-delta-dusky.vercel.app
 - Source: `landing/` (dark-mode static microsite)
 
 ## Features
