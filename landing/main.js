@@ -19,6 +19,10 @@ const state = {
   lastModeSwap: performance.now()
 };
 
+const STEP_X = 3.5;
+const RIGHT_PAD = 28;
+const LEFT_PAD = 20;
+
 function resize() {
   const dpr = window.devicePixelRatio || 1;
   const rect = canvas.getBoundingClientRect();
@@ -35,9 +39,25 @@ function pushPoint(t) {
   const drift = Math.sin(t / 830) * 2.8 + Math.cos(t / 590) * 1.7;
   const y = Math.min(h * 0.86, Math.max(h * 0.14, prev.y + noise + drift));
 
-  state.points.push({ x: w - 28, y });
-  for (const p of state.points) p.x -= 3.5;
-  state.points = state.points.filter((p) => p.x > 20);
+  state.points.push({ x: w - RIGHT_PAD, y });
+  for (const p of state.points) p.x -= STEP_X;
+  state.points = state.points.filter((p) => p.x > LEFT_PAD);
+  ptsNode.textContent = String(state.points.length);
+}
+
+function seedInitialSeries() {
+  state.points = [];
+  let x = w - RIGHT_PAD;
+  let y = h * 0.56;
+  let t = performance.now();
+  while (x > LEFT_PAD) {
+    const noise = (Math.random() - 0.5) * 10;
+    const drift = Math.sin(t / 860) * 2.2 + Math.cos(t / 640) * 1.5;
+    y = Math.min(h * 0.84, Math.max(h * 0.16, y + noise + drift));
+    state.points.unshift({ x, y });
+    x -= STEP_X;
+    t -= 16;
+  }
   ptsNode.textContent = String(state.points.length);
 }
 
@@ -189,7 +209,5 @@ if (copyInstallBtn && installSnippet) {
 
 window.addEventListener('resize', resize);
 resize();
-for (let i = 0; i < 120; i++) {
-  pushPoint(performance.now() + i * 16);
-}
+seedInitialSeries();
 requestAnimationFrame(frame);
