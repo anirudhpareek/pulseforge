@@ -1,0 +1,61 @@
+{
+  "name": "@anirudhpareek/pulseforge",
+  "version": "0.1.0",
+  "description": "Realtime React canvas charts with high-frequency streaming support.",
+  "author": "Anirudh Pareek",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./core": {
+      "types": "./dist/core.d.ts",
+      "import": "./dist/core.js",
+      "require": "./dist/core.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.ts src/core/index.ts --dts --format esm,cjs --sourcemap",
+    "dev": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "stress": "tsx stress/run.ts",
+    "bench": "tsx examples/benchmark.ts",
+    "check": "npm run test && npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "8.6.17",
+    "@storybook/addon-interactions": "8.6.17",
+    "@storybook/react-vite": "8.6.17",
+    "@storybook/test": "8.6.17",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.11",
+    "@types/react-dom": "^19.1.7",
+    "jsdom": "^26.1.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "storybook": "8.6.17",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
+  }
+}
