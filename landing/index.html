@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#04070b" />
-    <title>PulseForge | Why smooth realtime UX is rare</title>
+    <title>PulseForge | Realtime motion for data products</title>
     <meta
       name="description"
-      content="PulseForge design study: why quality in realtime interfaces is rare, and how to build calmer chart motion."
+      content="PulseForge is a React realtime chart package focused on smooth motion, readability under load, and production reliability."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -21,40 +21,81 @@
       <div class="top-inner">
         <a class="logo" href="#">PulseForge</a>
         <nav>
-          <a href="#article">Now</a>
-          <a href="#article">Craft</a>
+          <a href="#why">Why</a>
+          <a href="#usage">Usage</a>
+          <a href="#ack">Acknowledgements</a>
           <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
           <a class="btn" href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer">Install</a>
         </nav>
       </div>
     </header>
 
-    <main id="main-content" class="main" id="article">
+    <main id="main-content" class="main">
       <section class="hero">
         <p class="kicker">Now / Craft</p>
-        <h1>Why is quality so rare?</h1>
+        <h1>Why is quality so rare in realtime interfaces?</h1>
+        <p class="hero-sub">
+          PulseForge explores that question with a package built for calm motion, clear state transitions, and reliable performance under streaming load.
+        </p>
 
-        <div class="diagram-shell" aria-label="Quality waveform diagram">
-          <canvas id="quality-canvas" width="1400" height="700"></canvas>
+        <div class="diagram-shell" aria-label="PulseForge realtime chart demo">
+          <canvas id="pulse-canvas" width="1400" height="700"></canvas>
+          <div class="overlay" role="status" aria-live="polite">
+            <span><b id="fps">0</b> fps</span>
+            <span><b id="pts">0</b> points</span>
+            <span><b id="mode">line</b> mode</span>
+          </div>
         </div>
 
         <p class="meta">Anirudh Pareek · March 4, 2026</p>
       </section>
 
-      <section class="content">
+      <section class="content" id="why">
+        <h2>Why teams use PulseForge</h2>
         <p>
-          Quality breaks down when motion, readability, and system behavior are designed in isolation. PulseForge is built to keep
-          realtime charts calm under load by prioritizing legibility, predictable state transitions, and production-grade constraints.
+          Most chart libraries degrade when data updates continuously. PulseForge keeps interfaces readable by combining shape-preserving
+          decimation, a focused canvas render loop, and animation that explains change instead of adding noise.
         </p>
+        <ul class="plain-list">
+          <li>Single-canvas realtime rendering for lower overhead</li>
+          <li>Line and candlestick modes with consistent behavior</li>
+          <li>Reduced-motion and SSR-safe defaults</li>
+          <li>Stress harness and benchmark scripts for operational confidence</li>
+        </ul>
       </section>
 
-      <footer class="ack">
-        <p>Built by Anirudh Pareek.</p>
-        <div>
+      <section class="content" id="usage">
+        <h2>Quick usage</h2>
+        <p>Drop in one component and tune max points for your stream density.</p>
+
+        <div class="code-wrap">
+          <button id="copy-code" class="copy-btn" aria-label="Copy code">Copy</button>
+          <pre><code id="code-snippet">import { PulseForge } from '@anirudhpareek/pulseforge';
+
+&lt;PulseForge
+  mode="line"
+  lineData={stream}
+  width={900}
+  height={320}
+  maxPoints={700}
+  showFps
+/&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="content" id="ack">
+        <h2>Acknowledgements</h2>
+        <p>
+          Built by Anirudh Pareek. Design language inspired by Linear and Vercel. Motion inspiration from Liveline.
+        </p>
+        <p class="inline-links">
           <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://x.com/AnirudhP" target="_blank" rel="noreferrer">X</a>
-        </div>
-      </footer>
+          <a href="https://linear.app/now/why-is-quality-so-rare" target="_blank" rel="noreferrer">Linear reference</a>
+          <a href="https://vercel.com/blog/introducing-react-best-practices" target="_blank" rel="noreferrer">Vercel reference</a>
+          <a href="https://benji.org/liveline" target="_blank" rel="noreferrer">Liveline</a>
+        </p>
+      </section>
     </main>
 
     <script type="module" src="./main.js"></script>
