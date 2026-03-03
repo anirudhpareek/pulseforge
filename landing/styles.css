@@ -142,19 +142,25 @@ canvas {
   display: flex;
   gap: 0.6rem;
   flex-wrap: wrap;
-  color: var(--muted);
-  font-size: 0.76rem;
+  color: #e2e8f0;
+  font-size: 0.93rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-shadow: none;
 }
 
 .overlay span {
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 999px;
-  padding: 0.22rem 0.42rem;
-  background: rgba(4, 8, 12, 0.58);
+  padding: 0.28rem 0.58rem;
+  background: #050b12;
+  -webkit-font-smoothing: antialiased;
+  backface-visibility: hidden;
 }
 
 .overlay b {
-  color: var(--text);
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .content {
