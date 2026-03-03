@@ -3,79 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PulseForge | Realtime Charts for React</title>
+    <title>PulseForge | Realtime Motion for Data</title>
     <meta
       name="description"
-      content="PulseForge ships Liveline-style realtime chart motion in a production-ready React package."
+      content="PulseForge is a realtime React chart engine inspired by Linear and Vercel-level product craft."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="inner">
-        <a class="wordmark" href="#">PulseForge</a>
+    <header class="topbar">
+      <div class="top-inner">
+        <a class="logo" href="#">PulseForge</a>
         <nav>
+          <a href="#features">Features</a>
+          <a href="#demo">Demo</a>
           <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer">npm</a>
+          <a class="btn" href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer">Install</a>
         </nav>
       </div>
     </header>
 
-    <main class="content">
-      <p class="crumb">Blog / Engineering</p>
-      <h1>Introducing PulseForge: realtime chart motion that stays readable under load.</h1>
+    <main>
+      <section class="hero-wrap">
+        <div class="frame-grid"></div>
+        <p class="kicker">Realtime charts for modern products</p>
+        <h1>Build live data interfaces that feel calm, precise, and fast.</h1>
 
-      <section class="meta-row">
-        <div class="author-block">
-          <div class="avatar">AP</div>
-          <div>
-            <p class="author">Anirudh Pareek</p>
-            <p class="role">Product + Engineering</p>
+        <div class="hero-media" id="demo" aria-label="PulseForge chart demo">
+          <canvas id="pulse-canvas" width="1280" height="560"></canvas>
+          <div class="overlay">
+            <span><b id="fps">0</b> fps</span>
+            <span><b id="pts">0</b> points</span>
+            <span><b id="mode">line</b> mode</span>
           </div>
         </div>
-        <div class="post-stats">
-          <span>4 min read</span>
-          <span>Mar 3, 2026</span>
-        </div>
       </section>
 
-      <p class="lead">
-        PulseForge is a React canvas chart package inspired by Liveline-style motion. It keeps streaming data visually calm,
-        ships with line and candlestick modes, and includes decimation + stress tooling so performance remains predictable.
-      </p>
-
-      <section class="media-shell" id="demo" aria-label="PulseForge chart demo">
-        <canvas id="pulse-canvas" width="1200" height="520"></canvas>
-        <div class="media-overlay">
-          <span><strong id="fps">0</strong> fps</span>
-          <span><strong id="pts">0</strong> points</span>
-          <span><strong id="mode">line</strong> mode</span>
-        </div>
-      </section>
-
-      <section class="article">
-        <h2>The core idea</h2>
+      <section class="body" id="features">
         <p>
-          Most chart libraries get noisy when streams get fast. PulseForge favors ordering and legibility first: decimate aggressively,
-          preserve shape, and animate transitions only when they improve comprehension.
+          PulseForge is a React canvas package for realtime charts. It combines Liveline-inspired movement with practical engineering:
+          high-frequency decimation, line and candlestick modes, SSR-safe behavior, reduced-motion handling, and test + benchmark tooling.
         </p>
 
-        <h2>What ships in the package</h2>
-        <ul>
-          <li>Single-canvas render loop with low overhead</li>
-          <li>Line and candlestick rendering modes</li>
-          <li>Decimation for high-frequency feeds</li>
-          <li>SSR-safe fallback and reduced-motion support</li>
-          <li>Storybook examples, tests, benchmark and stress harness</li>
-        </ul>
+        <p>
+          The goal is simple: keep motion expressive but never noisy, keep data dense but never unreadable, and keep implementation
+          straightforward enough to ship in serious products.
+        </p>
 
-        <h2>Quick usage</h2>
         <pre><code>import { PulseForge } from '@anirudhpareek/pulseforge';
 
 &lt;PulseForge
@@ -87,12 +64,20 @@
   showFps
 /&gt;</code></pre>
       </section>
-
-      <section class="cta-strip">
-        <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer" class="btn btn-primary">Read the source</a>
-        <a href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer" class="btn btn-secondary">Install package</a>
-      </section>
     </main>
+
+    <footer class="ack">
+      <div class="ack-inner">
+        <p>
+          Built by Anirudh Pareek. Inspired by the craft and clarity of Linear and Vercel.
+        </p>
+        <div class="ack-links">
+          <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://x.com/AnirudhP" target="_blank" rel="noreferrer">X</a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./main.js"></script>
   </body>
-  <script type="module" src="./main.js"></script>
 </html>
