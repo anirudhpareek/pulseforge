@@ -176,13 +176,18 @@ if (!reduceMotion) {
   revealNodes.forEach((n) => io.observe(n));
 
   const hero = document.querySelector('.hero-media');
-  if (hero) {
+  const canTilt =
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(pointer: fine)').matches &&
+    window.innerWidth > 900;
+  if (hero && canTilt) {
     hero.addEventListener('mousemove', (e) => {
       const rect = hero.getBoundingClientRect();
       const nx = (e.clientX - rect.left) / rect.width - 0.5;
       const ny = (e.clientY - rect.top) / rect.height - 0.5;
-      state.ry = nx * 1.4;
-      state.rx = -ny * 1.4;
+      state.ry = nx * 1.05;
+      state.rx = -ny * 1.05;
     });
     hero.addEventListener('mouseleave', () => {
       state.rx = 0;
