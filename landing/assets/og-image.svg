@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="PulseForge Open Graph">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#0a1120"/>
+      <stop offset="100%" stop-color="#020713"/>
+    </radialGradient>
+    <radialGradient id="fade" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- dotted field -->
+  <g opacity="0.4" fill="#7e8796">
+    <!-- generated style grid -->
+    <circle cx="420" cy="120" r="2"/><circle cx="460" cy="120" r="2"/><circle cx="500" cy="120" r="2"/><circle cx="540" cy="120" r="2"/><circle cx="580" cy="120" r="2"/><circle cx="620" cy="120" r="2"/><circle cx="660" cy="120" r="2"/><circle cx="700" cy="120" r="2"/><circle cx="740" cy="120" r="2"/><circle cx="780" cy="120" r="2"/>
+    <circle cx="400" cy="150" r="2"/><circle cx="440" cy="150" r="2"/><circle cx="480" cy="150" r="2"/><circle cx="520" cy="150" r="2"/><circle cx="560" cy="150" r="2"/><circle cx="600" cy="150" r="2"/><circle cx="640" cy="150" r="2"/><circle cx="680" cy="150" r="2"/><circle cx="720" cy="150" r="2"/><circle cx="760" cy="150" r="2"/><circle cx="800" cy="150" r="2"/>
+    <circle cx="380" cy="180" r="2"/><circle cx="420" cy="180" r="2"/><circle cx="460" cy="180" r="2"/><circle cx="500" cy="180" r="2"/><circle cx="540" cy="180" r="2"/><circle cx="580" cy="180" r="2"/><circle cx="620" cy="180" r="2"/><circle cx="660" cy="180" r="2"/><circle cx="700" cy="180" r="2"/><circle cx="740" cy="180" r="2"/><circle cx="780" cy="180" r="2"/><circle cx="820" cy="180" r="2"/>
+    <circle cx="360" cy="210" r="2"/><circle cx="400" cy="210" r="2"/><circle cx="440" cy="210" r="2"/><circle cx="480" cy="210" r="2"/><circle cx="520" cy="210" r="2"/><circle cx="560" cy="210" r="2"/><circle cx="600" cy="210" r="2"/><circle cx="640" cy="210" r="2"/><circle cx="680" cy="210" r="2"/><circle cx="720" cy="210" r="2"/><circle cx="760" cy="210" r="2"/><circle cx="800" cy="210" r="2"/><circle cx="840" cy="210" r="2"/>
+    <circle cx="350" cy="240" r="2"/><circle cx="390" cy="240" r="2"/><circle cx="430" cy="240" r="2"/><circle cx="470" cy="240" r="2"/><circle cx="510" cy="240" r="2"/><circle cx="550" cy="240" r="2"/><circle cx="590" cy="240" r="2"/><circle cx="630" cy="240" r="2"/><circle cx="670" cy="240" r="2"/><circle cx="710" cy="240" r="2"/><circle cx="750" cy="240" r="2"/><circle cx="790" cy="240" r="2"/><circle cx="830" cy="240" r="2"/><circle cx="870" cy="240" r="2"/>
+    <circle cx="340" cy="270" r="2"/><circle cx="380" cy="270" r="2"/><circle cx="420" cy="270" r="2"/><circle cx="460" cy="270" r="2"/><circle cx="500" cy="270" r="2"/><circle cx="540" cy="270" r="2"/><circle cx="580" cy="270" r="2"/><circle cx="620" cy="270" r="2"/><circle cx="660" cy="270" r="2"/><circle cx="700" cy="270" r="2"/><circle cx="740" cy="270" r="2"/><circle cx="780" cy="270" r="2"/><circle cx="820" cy="270" r="2"/><circle cx="860" cy="270" r="2"/>
+    <circle cx="340" cy="300" r="2"/><circle cx="380" cy="300" r="2"/><circle cx="420" cy="300" r="2"/><circle cx="460" cy="300" r="2"/><circle cx="500" cy="300" r="2"/><circle cx="540" cy="300" r="2"/><circle cx="580" cy="300" r="2"/><circle cx="620" cy="300" r="2"/><circle cx="660" cy="300" r="2"/><circle cx="700" cy="300" r="2"/><circle cx="740" cy="300" r="2"/><circle cx="780" cy="300" r="2"/><circle cx="820" cy="300" r="2"/><circle cx="860" cy="300" r="2"/>
+    <circle cx="350" cy="330" r="2"/><circle cx="390" cy="330" r="2"/><circle cx="430" cy="330" r="2"/><circle cx="470" cy="330" r="2"/><circle cx="510" cy="330" r="2"/><circle cx="550" cy="330" r="2"/><circle cx="590" cy="330" r="2"/><circle cx="630" cy="330" r="2"/><circle cx="670" cy="330" r="2"/><circle cx="710" cy="330" r="2"/><circle cx="750" cy="330" r="2"/><circle cx="790" cy="330" r="2"/><circle cx="830" cy="330" r="2"/><circle cx="870" cy="330" r="2"/>
+    <circle cx="360" cy="360" r="2"/><circle cx="400" cy="360" r="2"/><circle cx="440" cy="360" r="2"/><circle cx="480" cy="360" r="2"/><circle cx="520" cy="360" r="2"/><circle cx="560" cy="360" r="2"/><circle cx="600" cy="360" r="2"/><circle cx="640" cy="360" r="2"/><circle cx="680" cy="360" r="2"/><circle cx="720" cy="360" r="2"/><circle cx="760" cy="360" r="2"/><circle cx="800" cy="360" r="2"/><circle cx="840" cy="360" r="2"/>
+    <circle cx="380" cy="390" r="2"/><circle cx="420" cy="390" r="2"/><circle cx="460" cy="390" r="2"/><circle cx="500" cy="390" r="2"/><circle cx="540" cy="390" r="2"/><circle cx="580" cy="390" r="2"/><circle cx="620" cy="390" r="2"/><circle cx="660" cy="390" r="2"/><circle cx="700" cy="390" r="2"/><circle cx="740" cy="390" r="2"/><circle cx="780" cy="390" r="2"/><circle cx="820" cy="390" r="2"/>
+    <circle cx="400" cy="420" r="2"/><circle cx="440" cy="420" r="2"/><circle cx="480" cy="420" r="2"/><circle cx="520" cy="420" r="2"/><circle cx="560" cy="420" r="2"/><circle cx="600" cy="420" r="2"/><circle cx="640" cy="420" r="2"/><circle cx="680" cy="420" r="2"/><circle cx="720" cy="420" r="2"/><circle cx="760" cy="420" r="2"/><circle cx="800" cy="420" r="2"/>
+    <circle cx="420" cy="450" r="2"/><circle cx="460" cy="450" r="2"/><circle cx="500" cy="450" r="2"/><circle cx="540" cy="450" r="2"/><circle cx="580" cy="450" r="2"/><circle cx="620" cy="450" r="2"/><circle cx="660" cy="450" r="2"/><circle cx="700" cy="450" r="2"/><circle cx="740" cy="450" r="2"/><circle cx="780" cy="450" r="2"/>
+  </g>
+
+  <path d="M510 300H555L585 235L645 365L678 300H720"
+        fill="none" stroke="#f4f6fa" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="600" y="468" text-anchor="middle" fill="#f4f6fa"
+        font-family="Inter, Manrope, Segoe UI, Arial, sans-serif" font-size="74" font-weight="600">PulseForge</text>
+</svg>
