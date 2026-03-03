@@ -1,174 +1,142 @@
-const canvas = document.getElementById('pulse-canvas');
-const fpsNode = document.getElementById('fps');
-const ptsNode = document.getElementById('pts');
-const modeNode = document.getElementById('mode');
-const copyBtn = document.getElementById('copy-code');
-const codeSnippet = document.getElementById('code-snippet');
-
+const canvas = document.getElementById('quality-canvas');
 const ctx = canvas.getContext('2d');
-const state = {
-  points: [],
-  mode: 'line',
-  lastPointAt: performance.now(),
-  lastModeAt: performance.now(),
-  lastFrameAt: performance.now()
-};
 
-let width = 0;
-let height = 0;
+let w = 0;
+let h = 0;
 
 function resize() {
   const dpr = window.devicePixelRatio || 1;
   const rect = canvas.getBoundingClientRect();
-  width = rect.width;
-  height = rect.height;
-  canvas.width = Math.floor(width * dpr);
-  canvas.height = Math.floor(height * dpr);
+  w = rect.width;
+  h = rect.height;
+  canvas.width = Math.floor(w * dpr);
+  canvas.height = Math.floor(h * dpr);
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 
-function addPoint(t) {
-  const prev = state.points[state.points.length - 1] ?? { y: height * 0.52 };
-  const base = Math.sin(t / 840) * 2 + Math.cos(t / 610) * 1.2;
-  const jitter = (Math.random() - 0.5) * 10;
-  const y = Math.min(height * 0.86, Math.max(height * 0.14, prev.y + base + jitter));
-
-  state.points.push({ x: width - 20, y });
-  for (const p of state.points) p.x -= 3.2;
-  state.points = state.points.filter((p) => p.x > 16);
-  ptsNode.textContent = String(state.points.length);
-}
-
 function drawGrid() {
-  ctx.fillStyle = '#0a1118';
-  ctx.fillRect(0, 0, width, height);
-  ctx.strokeStyle = 'rgba(255,255,255,0.09)';
+  ctx.clearRect(0, 0, w, h);
+  ctx.strokeStyle = 'rgba(255,255,255,0.14)';
   ctx.lineWidth = 1;
 
+  const cols = 10;
+  const rows = 6;
+
   ctx.beginPath();
-  for (let i = 1; i < 5; i++) {
-    const y = (height / 5) * i;
-    ctx.moveTo(0, y);
-    ctx.lineTo(width, y);
-  }
-  for (let i = 1; i < 8; i++) {
-    const x = (width / 8) * i;
+  for (let c = 0; c <= cols; c++) {
+    const x = (w / cols) * c;
     ctx.moveTo(x, 0);
-    ctx.lineTo(x, height);
+    ctx.lineTo(x, h);
+  }
+  for (let r = 0; r <= rows; r++) {
+    const y = (h / rows) * r;
+    ctx.moveTo(0, y);
+    ctx.lineTo(w, y);
   }
   ctx.stroke();
-}
 
-function drawLine() {
-  if (state.points.length < 2) return;
-
-  const grad = ctx.createLinearGradient(0, 0, 0, height);
-  grad.addColorStop(0, 'rgba(109,240,207,0.22)');
-  grad.addColorStop(1, 'rgba(109,240,207,0.02)');
-
-  const first = state.points[0];
+  // center axis
+  const axisY = h * 0.52;
+  ctx.strokeStyle = 'rgba(255,255,255,0.45)';
   ctx.beginPath();
-  ctx.moveTo(first.x, first.y);
-  for (let i = 1; i < state.points.length; i++) {
-    const prev = state.points[i - 1];
-    const p = state.points[i];
-    const cx = (prev.x + p.x) / 2;
-    ctx.quadraticCurveTo(prev.x, prev.y, cx, (prev.y + p.y) / 2);
-    if (i === state.points.length - 1) {
-      ctx.quadraticCurveTo(cx, (prev.y + p.y) / 2, p.x, p.y);
-    }
-  }
-
-  ctx.strokeStyle = '#6df0cf';
-  ctx.lineWidth = 2.1;
+  ctx.moveTo(0, axisY);
+  ctx.lineTo(w + 18, axisY);
   ctx.stroke();
 
-  const last = state.points[state.points.length - 1];
-  ctx.lineTo(last.x, height - 14);
-  ctx.lineTo(first.x, height - 14);
+  // axis arrow
+  ctx.fillStyle = 'rgba(255,255,255,0.45)';
+  ctx.beginPath();
+  ctx.moveTo(w + 18, axisY);
+  ctx.lineTo(w + 6, axisY - 6);
+  ctx.lineTo(w + 6, axisY + 6);
   ctx.closePath();
-  ctx.fillStyle = grad;
-  ctx.fill();
-
-  ctx.beginPath();
-  ctx.arc(last.x, last.y, 3.4, 0, Math.PI * 2);
-  ctx.fillStyle = '#f6be75';
   ctx.fill();
 }
 
-function drawCandles() {
-  if (state.points.length < 9) return;
-  const groups = [];
-  for (let i = 0; i < state.points.length; i += 7) {
-    const slice = state.points.slice(i, i + 7);
-    if (slice.length < 2) continue;
-    groups.push({
-      x: slice[Math.floor(slice.length / 2)].x,
-      open: slice[0].y,
-      close: slice[slice.length - 1].y,
-      high: Math.min(...slice.map((p) => p.y)),
-      low: Math.max(...slice.map((p) => p.y))
-    });
-  }
+function drawWave(now) {
+  const baseline = h * 0.52;
+  const amplitude = h * 0.22;
+  const segments = 7;
+  const segW = w / segments;
 
-  for (const c of groups) {
-    const up = c.close < c.open;
-    ctx.strokeStyle = up ? '#64e7b8' : '#f06e7f';
+  for (let s = 0; s < segments; s++) {
+    const startX = s * segW;
+    const splitX = startX + segW * 0.46;
+    const endX = startX + segW;
+
+    // dashed climb
+    ctx.setLineDash([5, 12]);
+    ctx.strokeStyle = 'rgba(255,255,255,0.72)';
+    ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(c.x, c.high);
-    ctx.lineTo(c.x, c.low);
+    ctx.moveTo(startX + 2, baseline + amplitude * 0.72);
+    ctx.lineTo(splitX, baseline - amplitude);
     ctx.stroke();
 
-    const top = Math.min(c.open, c.close);
-    const h = Math.max(2, Math.abs(c.close - c.open));
-    ctx.fillStyle = up ? '#64e7b8' : '#f06e7f';
-    ctx.fillRect(c.x - 2.8, top, 5.6, h);
-  }
-}
+    // smooth fall
+    ctx.setLineDash([]);
+    ctx.strokeStyle = 'rgba(255,255,255,0.78)';
+    ctx.beginPath();
+    ctx.moveTo(splitX, baseline - amplitude);
 
-function tick(now) {
-  const delta = now - state.lastFrameAt;
-  state.lastFrameAt = now;
+    const t = (now / 1400 + s * 0.14) % 1;
+    const cp1x = splitX + segW * (0.12 + t * 0.03);
+    const cp1y = baseline - amplitude;
+    const cp2x = splitX + segW * (0.56 + t * 0.04);
+    const cp2y = baseline + amplitude * 0.95;
 
-  if (now - state.lastPointAt > 62) {
-    addPoint(now);
-    state.lastPointAt = now;
-  }
-
-  if (now - state.lastModeAt > 6800) {
-    state.mode = state.mode === 'line' ? 'candlestick' : 'line';
-    modeNode.textContent = state.mode;
-    state.lastModeAt = now;
+    ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, endX - 2, baseline + amplitude * 0.72);
+    ctx.stroke();
   }
 
-  drawGrid();
-  if (state.mode === 'line') drawLine();
-  else drawCandles();
+  // bottom markers
+  const y = h * 0.9;
+  ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  ctx.lineWidth = 2;
 
-  fpsNode.textContent = (1000 / Math.max(1, delta)).toFixed(0);
-  requestAnimationFrame(tick);
-}
+  const a = w * 0.51;
+  const b = w * 0.63;
+  const c = w * 0.71;
 
-if (copyBtn && codeSnippet) {
-  copyBtn.addEventListener('click', async () => {
-    const text = codeSnippet.textContent ?? '';
-    try {
-      await navigator.clipboard.writeText(text);
-      const old = copyBtn.textContent;
-      copyBtn.textContent = 'Copied';
-      setTimeout(() => {
-        copyBtn.textContent = old;
-      }, 1200);
-    } catch {
-      copyBtn.textContent = 'Error';
-      setTimeout(() => {
-        copyBtn.textContent = 'Copy';
-      }, 1200);
-    }
+  [a, b, c].forEach((x) => {
+    ctx.beginPath();
+    ctx.moveTo(x, y - 9);
+    ctx.lineTo(x, y + 9);
+    ctx.stroke();
   });
+
+  function arrow(x1, x2) {
+    ctx.beginPath();
+    ctx.moveTo(x1, y);
+    ctx.lineTo(x2, y);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(x1, y);
+    ctx.lineTo(x1 + 8, y - 5);
+    ctx.lineTo(x1 + 8, y + 5);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(x2, y);
+    ctx.lineTo(x2 - 8, y - 5);
+    ctx.lineTo(x2 - 8, y + 5);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  arrow(a + 8, b - 8);
+  arrow(b + 8, c - 8);
+}
+
+function frame(now) {
+  drawGrid();
+  drawWave(now);
+  requestAnimationFrame(frame);
 }
 
 resize();
 window.addEventListener('resize', resize);
-for (let i = 0; i < 120; i++) addPoint(performance.now() + i * 16);
-requestAnimationFrame(tick);
+requestAnimationFrame(frame);
