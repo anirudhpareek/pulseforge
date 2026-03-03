@@ -47,16 +47,18 @@ function pushPoint(t) {
 
 function seedInitialSeries() {
   state.points = [];
-  let x = w - RIGHT_PAD;
-  let y = h * 0.56;
-  let t = performance.now();
-  while (x > LEFT_PAD) {
-    const noise = (Math.random() - 0.5) * 10;
-    const drift = Math.sin(t / 860) * 2.2 + Math.cos(t / 640) * 1.5;
-    y = Math.min(h * 0.84, Math.max(h * 0.16, y + noise + drift));
-    state.points.unshift({ x, y });
-    x -= STEP_X;
-    t -= 16;
+  const startX = LEFT_PAD;
+  const endX = w - RIGHT_PAD;
+  let x = startX;
+  while (x <= endX) {
+    const progress = (x - startX) / Math.max(1, endX - startX);
+    const base = h * 0.56;
+    const waveA = Math.sin(progress * Math.PI * 3.2) * (h * 0.085);
+    const waveB = Math.cos(progress * Math.PI * 7.6) * (h * 0.03);
+    const noise = (Math.random() - 0.5) * (h * 0.012);
+    const y = Math.min(h * 0.84, Math.max(h * 0.16, base + waveA + waveB + noise));
+    state.points.push({ x, y });
+    x += STEP_X;
   }
   ptsNode.textContent = String(state.points.length);
 }
