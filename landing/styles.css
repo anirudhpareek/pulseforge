@@ -105,7 +105,7 @@ nav a:hover {
 .main {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 3.8rem 1.2rem 4.8rem;
+  padding: 4.25rem 1.2rem 4.8rem;
 }
 
 .hero {
@@ -114,8 +114,8 @@ nav a:hover {
 
 h1 {
   margin: 0 auto 1.15rem;
-  max-width: 920px;
-  font-size: clamp(2.2rem, 5vw, 4.45rem);
+  max-width: 860px;
+  font-size: clamp(1.95rem, 4.35vw, 3.85rem);
   line-height: 1.03;
   letter-spacing: -0.04em;
   text-wrap: balance;
@@ -131,7 +131,7 @@ h1 {
 
 .diagram-shell {
   margin: 0 auto;
-  max-width: 980px;
+  max-width: 860px;
   border: 1px solid rgba(255, 255, 255, 0.11);
   background: linear-gradient(180deg, #050a0f 0%, #03070b 100%);
   position: relative;
@@ -297,12 +297,12 @@ code {
   .main {
     padding-left: 0.85rem;
     padding-right: 0.85rem;
-    padding-top: 2.45rem;
+    padding-top: 2.8rem;
     padding-bottom: 3.4rem;
   }
 
   h1 {
-    font-size: clamp(1.85rem, 7.2vw, 3.1rem);
+    font-size: clamp(1.65rem, 6.4vw, 2.55rem);
     margin-bottom: 0.72rem;
   }
 
