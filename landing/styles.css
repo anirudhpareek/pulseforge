@@ -112,7 +112,7 @@ button:focus-visible {
 
 .hero {
   margin-bottom: 2.2rem;
-  text-align: center;
+  text-align: left;
 }
 
 .kicker {
@@ -133,11 +133,11 @@ h1 {
 }
 
 .lead {
-  margin: 0 auto;
+  margin: 0;
   color: #c3cad4;
   max-width: 68ch;
   text-wrap: pretty;
-  text-align: center;
+  text-align: left;
 }
 
 .chart-wrap {
@@ -181,7 +181,7 @@ canvas {
 
 .content {
   margin-top: 2.35rem;
-  text-align: center;
+  text-align: left;
 }
 
 .content h2 {
@@ -191,7 +191,7 @@ canvas {
 }
 
 .content p {
-  margin: 0 auto;
+  margin: 0;
   color: #c3cad4;
   max-width: 67ch;
 }
@@ -206,7 +206,7 @@ canvas {
   list-style: none;
   display: grid;
   gap: 0.55rem;
-  justify-items: center;
+  justify-items: start;
 }
 
 .plain-list li {
@@ -226,7 +226,7 @@ canvas {
 }
 
 .code-wrap {
-  margin: 0.95rem auto 0;
+  margin: 0.95rem 0 0;
   width: min(100%, 740px);
   border: 1px solid var(--border);
   border-radius: 11px;
@@ -283,11 +283,11 @@ code {
 }
 
 .inline-links {
-  margin: 0.7rem auto 0;
+  margin: 0.7rem 0 0;
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem 0.75rem;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .inline-links a {
