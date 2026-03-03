@@ -3,7 +3,9 @@ const fpsNode = document.getElementById('fps');
 const ptsNode = document.getElementById('pts');
 const modeNode = document.getElementById('mode');
 const copyBtn = document.getElementById('copy-code');
+const copyInstallBtn = document.getElementById('copy-install');
 const codeSnippet = document.getElementById('code-snippet');
+const installSnippet = document.getElementById('install-snippet');
 const ctx = canvas.getContext('2d');
 
 const state = {
@@ -34,9 +36,6 @@ function addPoint(t) {
   const y = Math.min(h * 0.86, Math.max(h * 0.14, prev.y + base + jitter));
 
   state.points.push({ x: w - 18, y });
-  for (const p of state.points) p.x -= 3.2;
-  state.points = state.points.filter((p) => p.x > 8);
-  ptsNode.textContent = String(state.points.length);
 }
 
 function drawGrid() {
@@ -141,6 +140,11 @@ function drawCandles() {
 function tick(now) {
   const dt = now - state.lastFrameAt;
   state.lastFrameAt = now;
+  const travelDurationMs = 4400;
+  const speedPxPerMs = Math.max(0.12, (w - 26) / travelDurationMs);
+  for (const p of state.points) p.x -= speedPxPerMs * dt;
+  state.points = state.points.filter((p) => p.x > 8);
+  ptsNode.textContent = String(state.points.length);
 
   if (now - state.lastPointAt > 62) {
     addPoint(now);
@@ -178,7 +182,23 @@ if (copyBtn && codeSnippet) {
   });
 }
 
+if (copyInstallBtn && installSnippet) {
+  copyInstallBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(installSnippet.textContent ?? '');
+      copyInstallBtn.textContent = 'Copied';
+      setTimeout(() => {
+        copyInstallBtn.textContent = 'Copy';
+      }, 1200);
+    } catch {
+      copyInstallBtn.textContent = 'Error';
+      setTimeout(() => {
+        copyInstallBtn.textContent = 'Copy';
+      }, 1200);
+    }
+  });
+}
+
 resize();
 window.addEventListener('resize', resize);
-for (let i = 0; i < 120; i++) addPoint(performance.now() + i * 16);
 requestAnimationFrame(tick);

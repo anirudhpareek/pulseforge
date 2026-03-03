@@ -103,7 +103,7 @@ nav a:hover {
 h1 {
   margin: 0 auto 1.15rem;
   max-width: 920px;
-  font-size: clamp(2.4rem, 5.4vw, 4.85rem);
+  font-size: clamp(2.2rem, 5vw, 4.45rem);
   line-height: 1.03;
   letter-spacing: -0.04em;
   text-wrap: balance;
