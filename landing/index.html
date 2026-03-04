@@ -32,13 +32,26 @@
     <header class="topbar">
       <div class="top-inner">
         <a class="logo" href="#">PulseForge</a>
-        <nav>
+        <nav class="desktop-nav" aria-label="Primary">
           <a href="#why">Why</a>
           <a href="#usage">Usage</a>
           <a href="#ack">Acknowledgements</a>
           <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
           <a class="btn" href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer">Install</a>
         </nav>
+        <details class="mobile-nav">
+          <summary aria-label="Open navigation menu">
+            <span class="crumb">PulseForge / Menu</span>
+            <span class="menu-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="mobile-nav-panel" role="menu">
+            <a href="#why">Why</a>
+            <a href="#usage">Usage</a>
+            <a href="#ack">Acknowledgements</a>
+            <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn mobile-install" href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer">Install</a>
+          </div>
+        </details>
       </div>
     </header>
 

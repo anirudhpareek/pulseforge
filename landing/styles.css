@@ -15,6 +15,7 @@
 html,
 body {
   margin: 0;
+  width: 100%;
   background: radial-gradient(1200px 480px at 50% -260px, #0a121d 0%, var(--bg) 55%);
   color: var(--text);
   font-family: 'Manrope', sans-serif;
@@ -22,7 +23,7 @@ body {
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -71,20 +72,84 @@ body {
   letter-spacing: -0.02em;
 }
 
-nav {
+.desktop-nav {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-nav a {
+.desktop-nav a {
   color: var(--muted);
   text-decoration: none;
   font-size: 0.98rem;
 }
 
-nav a:hover {
+.desktop-nav a:hover {
   color: var(--text);
+}
+
+.mobile-nav {
+  display: none;
+}
+
+.mobile-nav summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.84rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  padding: 0.32rem 0.52rem;
+}
+
+.mobile-nav summary::-webkit-details-marker {
+  display: none;
+}
+
+.menu-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.mobile-nav[open] .menu-icon {
+  transform: rotate(45deg);
+}
+
+.mobile-nav-panel {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  min-width: 205px;
+  padding: 0.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(5, 9, 14, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+
+.mobile-nav-panel a {
+  display: block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  padding: 0.46rem 0.55rem;
+  border-radius: 8px;
+}
+
+.mobile-nav-panel a:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mobile-install {
+  margin-left: 0;
+  margin-top: 0.35rem;
+  text-align: center;
+  color: #05080c !important;
 }
 
 .btn {
@@ -105,6 +170,7 @@ nav a:hover {
 .main {
   max-width: 1120px;
   margin: 0 auto;
+  width: min(100%, 1120px);
   padding: 4.25rem 1.2rem 4.8rem;
 }
 
@@ -282,11 +348,11 @@ code {
     font-size: 1.3rem;
   }
 
-  nav {
+  .desktop-nav {
     gap: 0.5rem;
   }
 
-  nav a {
+  .desktop-nav a {
     font-size: 0.84rem;
   }
 
@@ -335,5 +401,52 @@ code {
     bottom: 0.62rem;
     gap: 0.45rem;
     font-size: 0.86rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .top-inner {
+    min-height: 58px;
+    padding: 0 0.72rem;
+    position: relative;
+  }
+
+  .logo {
+    font-size: 1.05rem;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+
+  .main {
+    padding: 2.2rem 0.72rem 3rem;
+  }
+
+  .hero-sub {
+    max-width: 35ch;
+  }
+
+  .content h2 {
+    font-size: clamp(1.3rem, 6vw, 1.7rem);
+  }
+
+  pre {
+    padding: 1rem 0.84rem;
+  }
+
+  code {
+    font-size: 0.76rem;
+  }
+
+  .overlay {
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    font-size: 0.8rem;
   }
 }

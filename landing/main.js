@@ -6,6 +6,7 @@ const copyBtn = document.getElementById('copy-code');
 const copyInstallBtn = document.getElementById('copy-install');
 const codeSnippet = document.getElementById('code-snippet');
 const installSnippet = document.getElementById('install-snippet');
+const mobileNav = document.querySelector('.mobile-nav');
 
 const ctx = canvas.getContext('2d');
 let w = 0;
@@ -206,6 +207,14 @@ if (copyInstallBtn && installSnippet) {
         copyInstallBtn.textContent = 'Copy';
       }, 1200);
     }
+  });
+}
+
+if (mobileNav) {
+  mobileNav.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', () => {
+      mobileNav.removeAttribute('open');
+    });
   });
 }
 
