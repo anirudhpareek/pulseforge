@@ -3,151 +3,167 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#06080f" />
-    <title>Signal Passport | Capture your frequency</title>
+    <meta name="theme-color" content="#04070b" />
+    <title>PulseForge | Realtime motion for data products</title>
     <meta
       name="description"
-      content="A premium interactive ritual that turns your movement into a shareable signal passport."
+      content="PulseForge is a React realtime chart package focused on smooth motion, readability under load, and production reliability."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Signal Passport | Capture your frequency" />
-    <meta property="og:description" content="Scan your motion. Mint your signal. Share your passport." />
+    <meta property="og:title" content="PulseForge | Realtime motion for data products" />
+    <meta property="og:description" content="React realtime chart package for smooth motion, readable density, and production reliability." />
     <meta property="og:url" content="https://pulseforge-site.vercel.app" />
     <meta property="og:image" content="https://pulseforge-site.vercel.app/assets/og-image.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="1680" />
-    <meta property="og:image:height" content="945" />
+    <meta property="og:image:width" content="4800" />
+    <meta property="og:image:height" content="2700" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Signal Passport | Capture your frequency" />
-    <meta name="twitter:description" content="Scan your motion. Mint your signal. Share your passport." />
+    <meta name="twitter:title" content="PulseForge | Realtime motion for data products" />
+    <meta name="twitter:description" content="React realtime chart package for smooth motion, readable density, and production reliability." />
     <meta name="twitter:image" content="https://pulseforge-site.vercel.app/assets/og-image.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
     <header class="topbar">
       <div class="top-inner">
-        <a class="logo" href="#">Signal Passport</a>
+        <a class="logo" href="#">PulseForge</a>
         <nav class="desktop-nav" aria-label="Primary">
-          <a href="#ritual">Ritual</a>
-          <a href="#passport">Passport</a>
-          <a href="#share">Share</a>
-          <a class="btn" href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="#why">Why</a>
+          <a href="#usage">Usage</a>
+          <a href="#ack">Acknowledgements</a>
+          <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn" href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer">Install</a>
         </nav>
         <details class="mobile-nav">
-          <summary aria-label="Open menu">
+          <summary aria-label="Open navigation menu">
             <span class="menu-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                 <path d="M4 7h16M4 12h16M4 17h16" />
               </svg>
             </span>
-            <span>Menu</span>
+            <span class="menu-label">Menu</span>
           </summary>
           <div class="mobile-nav-panel" role="menu">
-            <a href="#ritual">Ritual</a>
-            <a href="#passport">Passport</a>
-            <a href="#share">Share</a>
-            <a class="btn mobile-btn" href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="#why">Why</a>
+            <a href="#usage">Usage</a>
+            <a href="#ack">Acknowledgements</a>
+            <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn mobile-install" href="https://www.npmjs.com/package/@anirudhpareek/pulseforge" target="_blank" rel="noreferrer">Install</a>
           </div>
         </details>
       </div>
     </header>
 
     <main id="main-content" class="main">
-      <section class="hero" id="ritual">
-        <p class="eyebrow">Experimental Identity Studio</p>
-        <h1>Your behavior has a frequency.<br />Capture it.</h1>
+      <section class="hero">
+        <h1>Realtime charts that move like live systems, not screenshots.</h1>
         <p class="hero-sub">
-          Move your cursor or finger through the field. We sample your rhythm and mint a premium Signal Passport you can share.
+          PulseForge is a React chart component for streaming products. One canvas, smooth interpolation, and production-ready defaults for performance, readability, and control.
         </p>
 
-        <div class="ritual-shell" aria-label="Realtime signal ritual">
-          <canvas id="ritual-canvas" width="1280" height="600"></canvas>
-          <div class="ritual-overlay" role="status" aria-live="polite">
-            <span><b id="energy">00</b> energy</span>
-            <span><b id="coherence">00</b> coherence</span>
-            <span><b id="tempo">00</b> tempo</span>
-          </div>
-          <div class="ritual-actions">
-            <button id="lock-signal" type="button">Lock signal</button>
-            <button id="reset-signal" type="button">Reset</button>
+        <div class="diagram-shell" aria-label="PulseForge realtime chart demo">
+          <canvas id="pulse-canvas" width="1280" height="560"></canvas>
+          <div class="overlay" role="status" aria-live="polite">
+            <span><b id="fps">0</b> fps</span>
+            <span><b id="pts">0</b> points</span>
+            <span><b id="mode">line</b> mode</span>
           </div>
         </div>
+
       </section>
 
-      <section class="content" id="passport">
-        <div class="section-head">
-          <h2>Mint your Signal Passport</h2>
-          <p>Choose an identity frame, then generate a share card from your live signal.</p>
-        </div>
+      <section class="content" id="usage">
+        <h2>Getting started</h2>
+        <p>Install with npm:</p>
 
-        <div class="passport-grid">
-          <form id="passport-form" class="passport-form">
-            <label>
-              Name or alias
-              <input id="alias" name="alias" maxlength="24" placeholder="night-runner" />
-            </label>
-            <label>
-              Intensity
-              <input id="intensity" name="intensity" type="range" min="1" max="100" value="58" />
-            </label>
-            <label>
-              Mode
-              <select id="mode" name="mode">
-                <option value="focus">Focus</option>
-                <option value="drift">Drift</option>
-                <option value="chaos">Chaos</option>
-              </select>
-            </label>
-            <button id="mint-passport" class="primary" type="submit">Mint passport</button>
-          </form>
-
-          <article class="passport-card" id="passport-card" aria-live="polite">
-            <div class="passport-top">
-              <p class="passport-label">Signal Passport</p>
-              <p class="passport-id" id="passport-id">SP-0000</p>
-            </div>
-            <h3 id="passport-name">night-runner</h3>
-            <p id="archetype" class="archetype">Archetype: Pending</p>
-            <div class="passport-metrics">
-              <span>Energy <b id="card-energy">00</b></span>
-              <span>Coherence <b id="card-coherence">00</b></span>
-              <span>Tempo <b id="card-tempo">00</b></span>
-            </div>
-            <p id="passport-line" class="passport-line">Move through the ritual field to begin capture.</p>
-          </article>
+        <div class="code-wrap">
+          <button id="copy-install" class="copy-btn" aria-label="Copy install command">Copy</button>
+          <pre><code id="install-snippet">npm install @anirudhpareek/pulseforge</code></pre>
         </div>
       </section>
 
-      <section class="content" id="share">
-        <div class="section-head">
-          <h2>Share your frequency</h2>
-          <p>Copy the passport text or export a high-res card image for X.</p>
-        </div>
-        <div class="share-actions">
-          <button id="copy-passport" type="button">Copy share text</button>
-          <button id="download-passport" type="button">Download card image</button>
+      <section class="content" id="why">
+        <h2>Why PulseForge</h2>
+        <p>
+          Most chart libraries are either heavy or rigid. They can look great on static data and fall apart under real stream conditions.
+          PulseForge focuses on one core job: render changing values in a way that feels continuous, readable, and trustworthy.
+        </p>
+        <ul class="plain-list">
+          <li>Realtime rendering: single-canvas loop for low overhead</li>
+          <li>Line + candlestick modes for different reading styles</li>
+          <li>Decimation to preserve shape under dense streams</li>
+          <li>Reduced-motion + SSR-safe defaults for real apps</li>
+          <li>Benchmark and stress tooling before shipping</li>
+        </ul>
+      </section>
+
+      <section class="content">
+        <h2>Quick usage</h2>
+        <p>Drop in one component, set a stream, and tune max points for density.</p>
+
+        <div class="code-wrap">
+          <button id="copy-code" class="copy-btn" aria-label="Copy code">Copy</button>
+          <pre><code id="code-snippet">import { PulseForge } from '@anirudhpareek/pulseforge';
+
+&lt;PulseForge
+  mode="line"
+  lineData={stream}
+  width={900}
+  height={320}
+  maxPoints={700}
+  showFps
+/&gt;</code></pre>
         </div>
       </section>
 
-      <section class="content ack">
+      <section class="content" id="what-it-does">
+        <h2>What it does</h2>
+        <ul class="plain-list">
+          <li>Realtime rendering with a single-canvas loop</li>
+          <li>Line and candlestick modes with consistent behavior</li>
+          <li>Decimation for dense, high-frequency streams</li>
+          <li>SSR-safe and reduced-motion aware defaults</li>
+          <li>Benchmark and stress tooling for production confidence</li>
+        </ul>
+      </section>
+
+      <section class="content">
+        <h2>How it works</h2>
+        <p>
+          New values are interpolated into a continuous motion path instead of snapping frame-to-frame. This keeps trend direction readable
+          and reduces visual noise during jittery updates.
+        </p>
+      </section>
+
+      <section class="content">
+        <h2>Stress philosophy</h2>
+        <p>A chart that only survives clean demo data is not production-ready. PulseForge is tested against:</p>
+        <ul class="plain-list">
+          <li>Fast oscillations</li>
+          <li>Delayed and bursty updates</li>
+          <li>Sudden spikes and abrupt reversals</li>
+          <li>Reconnect gaps and catch-up windows</li>
+        </ul>
+      </section>
+
+      <section class="content" id="ack">
         <h2>Acknowledgements</h2>
-        <p>Built by liveline principles + product craft playbook workflows.</p>
+        <p>
+          Built on top of ideas from Liveline, Linear Craft quality principles, and Vercel React best-practices work.
+        </p>
         <p class="inline-links">
           <a href="https://github.com/anirudhpareek/pulseforge" target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://x.com/AnirudhP" target="_blank" rel="noreferrer">X</a>
         </p>
+        <p class="revision">Revision: 2026-03-04-r3</p>
       </section>
     </main>
 
-    <canvas id="export-canvas" width="1600" height="900" hidden></canvas>
     <script type="module" src="./main.js"></script>
   </body>
 </html>
